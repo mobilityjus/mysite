@@ -45,7 +45,7 @@ h1, h2, h3, h4 {
     float: right;
 }
 
-.top-menus, .top-menus:hover {
+.top-menu, .top-menu:hover {
     color: white;
     float: right;
     font-size: 26pt;
