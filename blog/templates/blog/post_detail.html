@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load markdownify %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -21,8 +22,8 @@
    onclick="return confirm('Are you sure you want to delete this post?')"><i class="fas fa-eraser"></i></a>
 
         <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-   </div>
+        <p>{{ post.text | markdown | safe }}</p>
+   </div> 
 
    <hr>
    <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-secondary">Add comment</a>
@@ -39,7 +40,7 @@
                <a href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
             {% endif %}
             <strong>{{ comment.author }}</strong>
-            <p> {{ comment.text }}</p>
+            <p> {{ comment.text | markdown | safe | linebreaksbr }}</p>
          </div>
       {% endif %}
 
